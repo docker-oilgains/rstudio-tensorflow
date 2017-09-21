@@ -4,7 +4,7 @@ MAINTAINER Alfonso Reyes
 # install python-dev. This affects the .so library loading
 RUN apt-get update \
   && apt-get install -y --no-install-recommends \
-    zlib1g-dev \     # needed by devtools
+    zlib1g-dev \
     python-dev
 
 # copy local file and run get-pip.py
