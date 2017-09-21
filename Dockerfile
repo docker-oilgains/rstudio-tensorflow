@@ -1,14 +1,15 @@
 FROM rocker/rstudio
 MAINTAINER Alfonso Reyes
 
-# install python-dev
+# install python-dev. This affects the .so library loading
 RUN apt-get update \
   && apt-get install -y --no-install-recommends \
-    zlib1g-dev \
+    zlib1g-dev \     # needed by devtools
     python-dev
 
-# copy and run get-pip.py
+# copy local file and run get-pip.py
 COPY get-pip.py /home/rstudio
+
 # install get-pip and virtualenv
 RUN python /home/rstudio/get-pip.py
 RUN pip install virtualenv
@@ -21,6 +22,7 @@ RUN install2.r --error \
 ## install tensorflow from within R. tensorflow installed in own environment
     && R -e "tensorflow::install_tensorflow()"
 
+# leave rstudio user and come back as root
 USER root
 # add packages for notebooks
 RUN install2.r --error \
