@@ -1,4 +1,4 @@
-FROM rocker/rstudio
+FROM f0nzie/rstudio
 MAINTAINER Alfonso Reyes
 
 # install python-dev. This affects the .so library loading
@@ -24,15 +24,4 @@ RUN install2.r --error \
 
 # leave rstudio user and come back as root
 USER root
-# add packages for notebooks
-RUN install2.r --error \
-    evaluate \
-    formatR  \ 
-    highr   \
-    markdown \ 
-    htmltools \
-    caTools  \
-    knitr   \
-    base64enc \
-    rprojroot  \
-    rmarkdown
+
