@@ -7,6 +7,7 @@ RUN apt-get update \
     zlib1g-dev \
     python-dev
 
+# install RCurl and devtools
 RUN install2.r --error \
      RCurl \
      devtools
@@ -24,5 +25,5 @@ RUN python /home/rstudio/get-pip.py \
 USER rstudio
 RUN R -e "tensorflow::install_tensorflow()"
 
-# go back to root user, otherwise gives error 
+# go back to root user, otherwise gives error
 USER root
