@@ -23,10 +23,6 @@ RUN python /home/rstudio/get-pip.py \
 # will use Python environment under rstudio folder
 USER rstudio
 RUN R -e "tensorflow::install_tensorflow()"
-    
-USER root    
 
-
-
-
-
+# go back to root user, otherwise gives error 
+USER root
