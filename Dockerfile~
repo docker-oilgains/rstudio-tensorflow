@@ -20,7 +20,7 @@ RUN python /home/rstudio/get-pip.py \
 	&& install2.r --error tensorflow
 
 # install tensorflow inside R as rstudio user
-# will use Python environment under rstudio folder
+# will use Python environment under username folder
 USER rstudio
 RUN R -e "tensorflow::install_tensorflow()"
     
